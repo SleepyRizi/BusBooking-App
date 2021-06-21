@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.busbooking.Userhelper.TicketAdapter;
@@ -15,10 +16,19 @@ public class ticketsbuy extends AppCompatActivity {
 
     RecyclerView recyclerView;
     TicketAdapter ticketAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticketsbuy);
+        //getting intent
+
+        Intent intent= getIntent();
+        String from= intent.getStringExtra("from");
+        String to= intent.getStringExtra("destin");
+
+
+
         recyclerView=findViewById(R.id.ticket_recycle);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         //fetching data from firebase
@@ -27,9 +37,9 @@ public class ticketsbuy extends AppCompatActivity {
                 new FirebaseRecyclerOptions.Builder<BusModelclass>()
                 .setQuery(query, BusModelclass.class)
                 .build();
-
          ticketAdapter= new TicketAdapter(options);
         recyclerView.setAdapter(ticketAdapter);
+
 
     }
 
