@@ -252,7 +252,7 @@ public class registerUser extends AppCompatActivity {
 
         rootnode = FirebaseDatabase.getInstance(); //get root
         reference = rootnode.getReference().child("user"); //create chile(table)
-        UsersData usersData = new UsersData(name, mobile, cnic, email, password, dob, gender); //store in class obj
+        UsersData usersData = new UsersData(name, mobile, cnic, email, password, dob, gender, (double) 5000); //store in class obj
 
         reference.child(mobile)
                 .setValue(usersData) //pass value to referece that stores child(user) reference

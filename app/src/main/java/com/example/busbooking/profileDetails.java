@@ -27,6 +27,7 @@ public class profileDetails extends AppCompatActivity {
             tvemail.getEditText().setText(intent.getStringExtra("email"));
             tvcnic.getEditText().setText(intent.getStringExtra("cnic"));
             tvmobile.getEditText().setText(intent.getStringExtra("mobile"));
+
         }
 
 
@@ -36,6 +37,7 @@ public class profileDetails extends AppCompatActivity {
             tvemail= (TextInputLayout) findViewById(R.id.dialogemail);
             tvcnic= (TextInputLayout) findViewById(R.id.dialogcnic);
             tvmobile= (TextInputLayout) findViewById(R.id.dialogmobile);
+
 
     }
 

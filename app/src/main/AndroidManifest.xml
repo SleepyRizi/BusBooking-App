@@ -14,17 +14,11 @@
 
         </activity>
         <activity android:name=".Destinations">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity android:name=".profileDetails" />
-        <activity android:name=".Profilepage">
-            android:launchMode="singleTask"
-        </activity>
+        <activity android:name=".Profilepage"> android:launchMode="singleTask" </activity>
         <activity android:name=".registerUser" />
         <activity android:name=".splashScreen" >
 

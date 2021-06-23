@@ -10,12 +10,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class Profilepage extends AppCompatActivity {
-    TextView profilename,profilenumber;
+    TextView profilename,profilenumber,tvpesa;
     String username,useremail,usercnic,usermobile;
+    double money;
      //ArrayList<Intent> capture ;
     // final  ArrayList<Intent> store= new ArrayList<>();
     ProgressDialog progressDialog;
@@ -55,11 +57,16 @@ public class Profilepage extends AppCompatActivity {
         usermobile= capture.get(0).getStringExtra("mobile");*/
         Intent intent = getIntent();
         username= intent.getStringExtra("name");
-        useremail= intent.getStringExtra("emil");
+        useremail= intent.getStringExtra("email");
         usercnic= intent.getStringExtra("cnic");
         usermobile= intent.getStringExtra("mobile");
+        money= intent.getDoubleExtra("price",5000);
+
+
+
         profilename.setText(username);
         profilenumber.setText(usermobile);
+        tvpesa.setText(money+"0 Rs.");
        // store.add(capture.get(0));
         }
       /*  else{
@@ -71,6 +78,7 @@ public class Profilepage extends AppCompatActivity {
     private void init(){
         profilename= (TextView) findViewById(R.id.profilename);
         profilenumber= (TextView) findViewById(R.id.profilephone);
+        tvpesa= (TextView) findViewById(R.id.tvpesa);
 
     }
 
