@@ -136,14 +136,14 @@ public class MainActivity extends AppCompatActivity {
                                 String pemail = snapshot.child("email").getValue(String.class);
                                 String pname = snapshot.child("name").getValue(String.class);
                                 String pmobile = snapshot.child("mobile").getValue(String.class);
-                                Double price = (Double) snapshot.child("price").getValue(Double.class);
+                                Double money = (Double) snapshot.child("money").getValue(Double.class);
 
                                 Intent intent = new Intent(MainActivity.this, Profilepage.class);
                                 intent.putExtra("name",pname);
                                 intent.putExtra("email",pemail);
                                 intent.putExtra("mobile",pmobile);
                                 intent.putExtra("cnic",pcnic);
-                                intent.putExtra("price",price);
+                                intent.putExtra("money",money);
                                 startActivity(intent);
                                 finish();
 

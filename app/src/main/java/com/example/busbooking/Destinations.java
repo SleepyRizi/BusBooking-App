@@ -1,6 +1,7 @@
 package com.example.busbooking;
 
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,9 +18,12 @@ import java.util.ArrayList;
 public class Destinations extends AppCompatActivity {
     TextInputLayout til_board,til_destin;
     AutoCompleteTextView autoboard,autodestin;
-
     ArrayList<String> locations;
     ArrayAdapter<String> arrayAdapter_locations;
+    String usermobile;
+    Double money;
+
+    final int TICKET_BUY=1;
 
     @Override
     protected void onResume() {
@@ -43,6 +47,10 @@ public class Destinations extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
           setContentView(R.layout.activity_destinations);
+        Intent intent = getIntent();
+        usermobile= intent.getStringExtra("usermobile");
+        money= intent.getDoubleExtra("money",5000);
+
         init();
         locations = new ArrayList<>();
         locations.add("Lahore");
@@ -81,7 +89,28 @@ public class Destinations extends AppCompatActivity {
         Intent intent = new Intent(Destinations.this, ticketsbuy.class);
             intent.putExtra("from",from);
             intent.putExtra("destin",toDestin);
-            startActivityForResult(intent,1);}
+            intent.putExtra("usermobile",usermobile);
+            intent.putExtra("money",money);
+            startActivityForResult(intent,TICKET_BUY);
 
+           }
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable  Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==TICKET_BUY && resultCode==RESULT_OK){
+            Intent intent=getIntent();
+            Double remain= intent.getDoubleExtra("remainMoney",1000);
+            Intent i= new Intent(Destinations.this,MainActivity.class);
+            i.putExtra("remainMoney",remain);
+           // Toast.makeText(this, "Destination BuyToast", Toast.LENGTH_SHORT).show();
+            setResult(RESULT_OK);
+            finish();
+        }
+        else{
+            Toast.makeText(this, "Nothing Selected", Toast.LENGTH_SHORT).show();
+        }
     }
 }

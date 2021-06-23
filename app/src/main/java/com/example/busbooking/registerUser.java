@@ -95,10 +95,10 @@ public class registerUser extends AppCompatActivity {
         if (mobilevalu.isEmpty()) {
             edRegmobile.setError("Field can't be empty");
             return false;
-        } /*else if (mobilevalu.length() < 10) {
+        } else if (mobilevalu.length() < 10) {
             edRegmobile.setError("Enter Valid mobile number");
             return false;
-        }*/  else {
+        }  else {
             edRegmobile.setError(null);
             edRegmobile.setErrorEnabled(false);
             return true;

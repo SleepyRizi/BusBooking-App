@@ -8,14 +8,14 @@ public class UsersData {
     String password;
     String dateofbirth;
     String gender;
-    Double price;
+    Double money;
 
 
     public UsersData() {
 
     }
 
-    public UsersData(String name, String mobile, String cnic, String email, String password, String dateofbirth, String gender, Double price) {
+    public UsersData(String name, String mobile, String cnic, String email, String password, String dateofbirth, String gender, Double money) {
         this.name = name;
         this.mobile = mobile;
         this.cnic = cnic;
@@ -23,7 +23,7 @@ public class UsersData {
         this.password = password;
         this.dateofbirth = dateofbirth;
         this.gender = gender;
-        this.price = price;
+        this.money = money;
     }
 
     public String getName() {
@@ -82,12 +82,12 @@ public class UsersData {
         this.gender = gender;
     }
 
-    public Double getPrice() {
-        return price;
+    public Double getMoney() {
+        return money;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setMoney(Double money) {
+        this.money = money;
     }
 
     @Override
@@ -100,7 +100,7 @@ public class UsersData {
                 ", password='" + password + '\'' +
                 ", dateofbirth='" + dateofbirth + '\'' +
                 ", gender='" + gender + '\'' +
-                ", price='" + price + '\'' +
+                ", money=" + money +
                 '}';
     }
 }

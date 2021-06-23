@@ -1,5 +1,6 @@
 package com.example.busbooking;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -21,7 +22,9 @@ public class profileDetails extends AppCompatActivity {
         if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {
             finish();
             return;
-        }else {
+        }
+
+        else {
             Intent intent = getIntent();
             tvname.getEditText().setText(intent.getStringExtra("name"));
             tvemail.getEditText().setText(intent.getStringExtra("email"));
@@ -29,6 +32,7 @@ public class profileDetails extends AppCompatActivity {
             tvmobile.getEditText().setText(intent.getStringExtra("mobile"));
 
         }
+
 
 
     }
@@ -53,4 +57,6 @@ public class profileDetails extends AppCompatActivity {
 
 
     }
+
+
 }
