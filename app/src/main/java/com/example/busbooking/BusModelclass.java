@@ -1,5 +1,7 @@
 package com.example.busbooking;
 
+import android.widget.TextView;
+
 public class BusModelclass {
     String busid;
     String fromlocation;

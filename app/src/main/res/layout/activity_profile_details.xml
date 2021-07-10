@@ -20,12 +20,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.16">
+        app:layout_constraintVertical_bias="0.29">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="none"/>
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -42,12 +42,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:startIconTint="@color/Primary_background"
         app:startIconDrawable="@drawable/mail"
-        app:layout_constraintVertical_bias="0.29">
+        app:layout_constraintVertical_bias="0.55">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="none"
+            android:inputType="textEmailAddress"
 
           />
 
@@ -70,8 +70,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:inputType="none"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:maxLength="13"
+            android:inputType="number"
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,7 +91,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.55">
+        app:layout_constraintVertical_bias="0.16">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -98,15 +100,38 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Back"
-        android:onClick="backtoprofilepage"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dialogmobile" />
+        app:layout_constraintTop_toBottomOf="@+id/dialogemail"
+        app:layout_constraintVertical_bias="0.19999999">
+
+
+        <Button
+            android:id="@+id/btncancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:onClick="backtoprofilepage"
+            android:layout_weight="2"
+            android:height="0dp"
+
+            android:text="Cancel" />
+
+        <Button
+            android:id="@+id/btnupdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_weight="2"
+            android:height="0dp"
+            android:onClick="btn_update"
+
+            android:text="Update" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

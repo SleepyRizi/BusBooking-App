@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.busbooking.Userhelper.DBuser;
 import com.example.busbooking.Userhelper.TicketAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,7 +31,7 @@ public class ticketsbuy extends AppCompatActivity implements TicketAdapter.itemS
     RecyclerView recyclerView;
     RecyclerView.Adapter ticketAdapter;
     //TicketAdapter ticketAdapter;
-    DatabaseReference dbref;
+//    DatabaseReference dbref;
     private ArrayList<BusModelclass> listData;
     private ArrayList<BusModelclass> templistData;
     String usermobile;
@@ -188,8 +189,13 @@ public class ticketsbuy extends AppCompatActivity implements TicketAdapter.itemS
                         Toast.makeText(ticketsbuy.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
                     }
                 });
-
-        Toast.makeText(this, money.toString(), Toast.LENGTH_SHORT).show();
+          //sql write
+            DBuser dBuser = new DBuser(ticketsbuy.this);
+            dBuser.open();
+            dBuser.addTicket(usermobile,busid);
+            dBuser.close();
+          //
+        //Toast.makeText(this, money.toString(), Toast.LENGTH_SHORT).show();
         //Toast.makeText(this, ((toString(money))), Toast.LENGTH_SHORT).show();
 
 

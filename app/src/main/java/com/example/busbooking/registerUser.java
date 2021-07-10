@@ -22,6 +22,7 @@ import android.widget.RadioGroup;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.busbooking.Userhelper.DBuser;
 import com.example.busbooking.Userhelper.UsersData;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -76,19 +77,6 @@ public class registerUser extends AppCompatActivity {
     }
 
 
-    private Boolean validateName() {
-
-        String namevalu = edRegname.getEditText().getText().toString().trim();
-        if (namevalu.isEmpty()) {
-            edRegname.setError("Field can't be empty");
-            return false;
-        } else {
-            edRegname.setError(null);
-            edRegname.setErrorEnabled(false);
-            return true;
-        }
-    }
-
     private Boolean validatemobile() {
         //String checkspaces = "Aw{1,20}z";
         String mobilevalu = edRegmobile.getEditText().getText().toString().trim();
@@ -101,6 +89,19 @@ public class registerUser extends AppCompatActivity {
         }  else {
             edRegmobile.setError(null);
             edRegmobile.setErrorEnabled(false);
+            return true;
+        }
+    }
+
+    private Boolean validateName() {
+
+        String namevalu = edRegname.getEditText().getText().toString().trim();
+        if (namevalu.isEmpty()) {
+            edRegname.setError("Field can't be empty");
+            return false;
+        } else {
+            edRegname.setError(null);
+            edRegname.setErrorEnabled(false);
             return true;
         }
     }
@@ -183,6 +184,7 @@ public class registerUser extends AppCompatActivity {
             public void onClick(View v) {
                 Intent login = new Intent(registerUser.this, MainActivity.class);
                 startActivity(login);
+                Toast.makeText(registerUser.this, "Canceled", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -268,6 +270,17 @@ public class registerUser extends AppCompatActivity {
                         Toast.makeText(registerUser.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+        //save to sql database start
+
+        DBuser dBuser = new DBuser(this);
+        dBuser.open();
+
+        dBuser.createEntry(mobile,name,cnic,dob,email,gender,password,"5000",null);
+
+        dBuser.close();
+
+
+        //save to sql ends
         progressDialog = new ProgressDialog(registerUser.this);
         progressDialog.show();
         progressDialog.setContentView(R.layout.progress_dialog);
